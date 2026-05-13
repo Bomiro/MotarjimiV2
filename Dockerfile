@@ -1,19 +1,13 @@
-FROM node:20-alpine
+FROM node:18
 
-# إنشاء مجلد التطبيق
 WORKDIR /app
 
-# نسخ ملفات الحزم
-COPY package*.json ./
+COPY package.json .
 
-# تثبيت dependencies
-RUN npm install --production
+RUN npm install
 
-# نسخ باقي الملفات
 COPY . .
 
-# فتح البورت
-EXPOSE 8000
+EXPOSE 3000
 
-# تشغيل التطبيق
-CMD ["node", "index.js"]
+CMD [ "npm", "start" ]
